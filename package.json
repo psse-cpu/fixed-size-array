@@ -1,10 +1,11 @@
 {
   "name": "@psse-cpu/fixed-size-array",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JS/TS package to emulate fixed-size arrays from C/C++/Java and even Dart.  Only used in SE-1222 (Data Structures) exercises.  Not for production use.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc -p .",
     "test": "jest"
   },
   "repository": {
