@@ -20,5 +20,6 @@ scratch (especially array lists), this package is provided.
 - more tests
 - ESLint
 - Prettier
+- `FixedSizeArray.from`
 
 ## PRs and bug reports welcome!
