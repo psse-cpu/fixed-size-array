@@ -156,15 +156,15 @@ export default class FixedSizeArray<T> implements ReadonlyArray<T> {
     let array = Array.from(arrayLike)
 
     if (mapfn) {
-      array = array.map(mapfn);
+      array = array.map(mapfn)
     }
 
     const fixedSizeArray = new FixedSizeArray(array.length)
     array.forEach((value: any, index: number) => {
-      fixedSizeArray[index] = value;
+      fixedSizeArray[index] = value
     })
 
-    return fixedSizeArray;
+    return fixedSizeArray
   }
 
   [Symbol.iterator](): IterableIterator<T> {
