@@ -1,6 +1,6 @@
 export default class FixedSizeArray<T> implements ReadonlyArray<T> {
   private _data: T[]
-  
+
   constructor(length: number, fillValue: T | undefined = undefined) {
     this._data = new Array(length).fill(fillValue)
 
@@ -9,7 +9,7 @@ export default class FixedSizeArray<T> implements ReadonlyArray<T> {
         // typeof key === 'string' ensures key is not a symbol
         if (typeof key === 'string') {
           const index = Number(key)
-          
+
           if (Number.isInteger(index)) {
             return object._data[index]
           }
@@ -22,7 +22,7 @@ export default class FixedSizeArray<T> implements ReadonlyArray<T> {
         // typeof key === 'string' ensures key is not a symbol
         if (typeof key === 'string') {
           const index = Number(key)
-          
+
           if (Number.isInteger(index)) {
             if (index < 0 || index >= object._data.length) {
               throw new RangeError(
@@ -39,7 +39,7 @@ export default class FixedSizeArray<T> implements ReadonlyArray<T> {
       }
     })
   }
-  
+
   [n: number]: T
 
   get length(): number {
@@ -110,7 +110,7 @@ export default class FixedSizeArray<T> implements ReadonlyArray<T> {
   reduce(callbackfn: any, initialValue?: any): T {
     return this._data.reduce(callbackfn, initialValue)
   }
-  
+
   reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T): T
   reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T, initialValue: T): T
   reduceRight<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: readonly T[]) => U, initialValue: U): U
@@ -150,6 +150,21 @@ export default class FixedSizeArray<T> implements ReadonlyArray<T> {
 
   flat<A, D extends number = 1>(this: A, depth?: D): FlatArray<A, D>[] {
     return (this as unknown as this)._data.flat(depth) as FlatArray<A, D>[]
+  }
+
+  static from(arrayLike: ArrayLike<any> | Iterable<any>, mapfn?: (element: any, index: number) => any, thisArg?: any) : FixedSizeArray<any> {
+    let array = Array.from(arrayLike)
+
+    if (mapfn) {
+      array = array.map(mapfn);
+    }
+
+    const fixedSizeArray = new FixedSizeArray(array.length)
+    array.forEach((value: any, index: number) => {
+      fixedSizeArray[index] = value;
+    })
+
+    return fixedSizeArray;
   }
 
   [Symbol.iterator](): IterableIterator<T> {
