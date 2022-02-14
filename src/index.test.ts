@@ -26,7 +26,7 @@ describe('FixedSizeArray', () => {
       const array = new FixedSizeArray<Dog>(3, undefined)
       array[1] = { name: 'Riley', weight: 4 }
       expect(array.toNativeArray()).toEqual([
-        undefined, 
+        undefined,
         { name: 'Riley', weight: 4 },
         undefined
       ])
@@ -85,6 +85,26 @@ describe('FixedSizeArray', () => {
       array[4] = 'zoo'
 
       expect(array.slice(2)).toEqual(['foo', 'too', 'zoo'])
+    })
+
+    it('creates a Fixed Size Array using FixedSizeArray.from', () => {
+      const array = FixedSizeArray.from('foo')
+      expect(array.toNativeArray()).toEqual(['f', 'o', 'o'])
+    })
+
+    it('multiplies the array by 2 using FixedSizeArray.from', () => {
+      const array = FixedSizeArray.from([1, 2, 3, 4, 5], x => x * 2)
+      expect(array.toNativeArray()).toEqual([2, 4, 6, 8, 10])
+    })
+
+    it('creates a Fixed Size Array from Set', () => {
+      const array = FixedSizeArray.from(new Set(['foo', 'bar', 'baz', 'foo']))
+      expect(array.toNativeArray()).toEqual(['foo', 'bar', 'baz'])
+    })
+
+    it('creates a Fixed Size Array from Map', () => {
+      const array = FixedSizeArray.from(new Map([['1', 'a'], ['2', 'b']]))
+      expect(array.toNativeArray()).toEqual([['1', 'a'], ['2', 'b']])
     })
   })
 })
