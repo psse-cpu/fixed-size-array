@@ -26,6 +26,9 @@ let stringArray = new FixedSizeArray(5, '')
 class Dog { /* ... */ }
 
 let objectArray = new FixedSizeArray<Dog>(5, undefined)
+
+let usingFrom = FixedSizeArray.from([1, 9, 2])
+usingFrom[3] = 60 // won't work
 ```
 
 ### Alternatives
