@@ -1,6 +1,6 @@
 # @psse-cpu/fixed-size-array
 
-### :warning: :warning: Might contains bugs, do not use
+### :warning: :warning: Might contain bugs, do not use
 
 JS/TS package to emulate fixed-size arrays from C/C++/Java and even Dart.  
 Only used in SE-1222 (Data Structures) exercises.  Not for production use.
