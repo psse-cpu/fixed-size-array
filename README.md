@@ -1,6 +1,10 @@
 # @psse-cpu/fixed-size-array
 
-### :warning: :warning: Might contain bugs, do not use
+### :warning: deprecated, do not use
+
+`Object.seal` only fails silently on the Node.js REPL, it fails when actually
+ran in a Node.js app.  This package is not a native array and will give more
+headaches than benefits.
 
 JS/TS package to emulate fixed-size arrays from C/C++/Java and even Dart.  
 Only used in SE-1222 (Data Structures) exercises.  Not for production use.
